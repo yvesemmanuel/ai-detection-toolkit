@@ -276,7 +276,7 @@ def smash_n_reconstruct(
     return generator.process_image(input_path, use_filters, is_color)
 
 
-def preprocess(path: str, label: int) -> Tuple[tf.Tensor, tf.Tensor, tf.Tensor]:
+def preprocess(path: str, label: int = None) -> Tuple[tf.Tensor, tf.Tensor, tf.Tensor]:
     """
     Preprocess an image to extract rich and poor texture reconstructions.
 
@@ -297,5 +297,8 @@ def preprocess(path: str, label: int) -> Tuple[tf.Tensor, tf.Tensor, tf.Tensor]:
     rt, pt = smash_n_reconstruct(path)
     frt = tf.cast(tf.expand_dims(f.apply_all_filters(rt), axis=-1), dtype=tf.float64)
     fpt = tf.cast(tf.expand_dims(f.apply_all_filters(pt), axis=-1), dtype=tf.float64)
-    label = tf.constant(label, dtype=tf.int32)
-    return frt, fpt, label
+    if label is not None:
+        label = tf.constant(label, dtype=tf.int32)
+        return frt, fpt, label
+    else:
+        return frt, fpt
