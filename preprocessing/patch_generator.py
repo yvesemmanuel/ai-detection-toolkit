@@ -17,6 +17,7 @@ import concurrent.futures
 from typing import List, Tuple
 import preprocessing.filters as f
 
+PIL.Image.MAX_IMAGE_PIXELS = None
 
 class PatchGenerator:
     """Handles image patch extraction, analysis and reconstruction."""
@@ -49,9 +50,12 @@ class PatchGenerator:
         if isinstance(input_path, bytes):
             input_path = input_path.decode("utf-8")
         img = PIL.Image.open(fp=input_path)
-        if not (
-            input_path.lower().endswith("jpg") or input_path.lower().endswith("jpeg")
-        ):
+        
+        # # Verificação de segurança manual
+        # if img.size[0] * img.size[1] > 178_956_970:
+        #     raise ValueError(f"Image too large: {img.size} pixels")
+
+        if img.mode != "RGB":
             img = img.convert("RGB")
 
         if img.size != self.target_size:
