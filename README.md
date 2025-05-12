@@ -8,3 +8,4 @@ This project lays the foundation for a versatile toolkit aimed at detecting arti
 - [ArtiFact: Real and Fake Image Dataset](https://www.kaggle.com/datasets/ravidussilva/real-ai-art)
 - [AI Recognition Dataset](https://www.kaggle.com/datasets/superpotato9/dalle-recognition-dataset/data)
 - [CIFAKE: Real and AI-Generated Synthetic Images](https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images)
+- [AI Generated Images vs Real Images](https://www.kaggle.com/datasets/cashbowman/ai-generated-images-vs-real-images?select=RealArt)

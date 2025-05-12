@@ -50,10 +50,6 @@ class PatchGenerator:
         if isinstance(input_path, bytes):
             input_path = input_path.decode("utf-8")
         img = PIL.Image.open(fp=input_path)
-        
-        # # Verificação de segurança manual
-        # if img.size[0] * img.size[1] > 178_956_970:
-        #     raise ValueError(f"Image too large: {img.size} pixels")
 
         if img.mode != "RGB":
             img = img.convert("RGB")
